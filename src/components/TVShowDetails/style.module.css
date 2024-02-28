@@ -1,0 +1,26 @@
+.title {
+  font-weight: 400;
+  font-size: 35px;
+}
+
+.rating {
+  margin-top: 3px;
+  margin-left: 6px;
+}
+.rating_container {
+  display: flex;
+}
+
+.synopsis {
+  font-family: Roboto;
+  font-weight: 400;
+  font-size: 20px;
+  height: 120px;
+  overflow-y: hidden;
+  margin-top: 10px;
+}
+
+.synopsis:hover {
+  overflow-y: auto;
+  scrollbar-color: rgb(72, 72, 72) #848383;
+}
