@@ -4,8 +4,7 @@ body {
 }
 
 ::-webkit-scrollbar {
-  background: transparent;g
-  width: 10px;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb:horizontal {
