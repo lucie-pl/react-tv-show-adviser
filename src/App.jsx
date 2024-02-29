@@ -4,14 +4,17 @@ import './global.css';
 import s from './style.module.css';
 import { BACKDROP_BASE_URL } from './config.js';
 import { TVShowDetails } from './components/TVShowDetails/TVShowDetails.jsx';
+// import { TVShowProvidersList } from './components/TVShowProviders/TVShowProvidersList.jsx';
 import { Logo } from './components/Logo/Logo';
 import logo from './assets/images/logo.png';
 import { TVShowList } from './components/TVShowList/TVShowList.jsx';
 import { SearchBar } from './components/SearchBar/SearchBar.jsx';
+import { TVShowProvidersListItem } from './components/TVShowProvidersListItem/TVShowProvidersListItem.jsx';
 
 export function App() {
   const [currentTVShow, setCurrentTVShow] = useState();
   const [recommendationList, setRecommendationList] = useState([]);
+  const [providersList, setProvidersList] = useState([]);
 
   async function fetchPopulars() {
     try {
@@ -33,6 +36,18 @@ export function App() {
       alert('Error while searching the recommandations');
     }
   }
+
+  async function fetchProviders(tvShowId) {
+    try {
+      const providers = await TVShowAPI.fetchProviders(tvShowId);
+      if (providers.CA.flatrate.length > 0) {
+        setProvidersList(providers.CA.flatrate.slice(0, 3));
+      }
+    } catch (error) {
+      alert('Error while searching providers');
+    }
+  }
+
   async function searchTVShow(tvShowName) {
     try {
       const searchResponse = await TVShowAPI.fetchByTitle(tvShowName);
@@ -48,6 +63,12 @@ export function App() {
     fetchPopulars();
   }, []);
 
+  useEffect(() => {
+    if (currentTVShow) {
+      fetchProviders(currentTVShow.id);
+    }
+  }, [currentTVShow]);
+
   //If currentTVShow change, we want to update the list of recommendations based on that
   useEffect(() => {
     if (currentTVShow) {
@@ -55,6 +76,7 @@ export function App() {
     }
   }, [currentTVShow]);
 
+  console.log(providersList);
   return (
     <div
       className={s.main_container}
@@ -74,9 +96,11 @@ export function App() {
           </div>
         </div>
       </div>
-
       <div className={s.tv_show_details}>
         {currentTVShow && <TVShowDetails tvShow={currentTVShow} />}
+        {providersList && providersList.length > 0 && (
+          <TVShowProvidersListItem tvShowProviders={providersList} />
+        )}
       </div>
       <div className={s.recommendations}>
         {recommendationList && recommendationList.length > 0 && (
