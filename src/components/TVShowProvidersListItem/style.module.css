@@ -1,0 +1,22 @@
+.logo {
+  height: 50px;
+  width: 50px;
+  margin: 8px;
+  margin-bottom: 30px;
+  border-radius: 5px;
+}
+.providers {
+  display: flex;
+  align-items: center;
+}
+
+.just_watch {
+  margin-left: 18px;
+  font-family: Roboto;
+  font-style: italic;
+  font-size: 16px;
+}
+.just_watch a {
+  text-decoration: none;
+  color: rgb(244, 209, 105);
+}
