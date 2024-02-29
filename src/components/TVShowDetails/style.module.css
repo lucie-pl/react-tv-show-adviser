@@ -1,3 +1,9 @@
+.tv_show_details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
 .title {
   font-weight: 400;
   font-size: 35px;
