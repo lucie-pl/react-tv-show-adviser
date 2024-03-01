@@ -36,7 +36,6 @@ export function App() {
       alert('Error while searching the recommandations');
     }
   }
-
   async function fetchProviders(tvShowId) {
     try {
       const providers = await TVShowAPI.fetchProviders(tvShowId);
@@ -44,10 +43,9 @@ export function App() {
         setProvidersList(providers.CA.flatrate.slice(0, 3));
       }
     } catch (error) {
-      alert('Error while searching providers');
+      // alert('Error while searching providers');
     }
   }
-
   async function searchTVShow(tvShowName) {
     try {
       const searchResponse = await TVShowAPI.fetchByTitle(tvShowName);
@@ -76,7 +74,6 @@ export function App() {
     }
   }, [currentTVShow]);
 
-  console.log(providersList);
   return (
     <div
       className={s.main_container}
