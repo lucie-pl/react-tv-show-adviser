@@ -1,10 +1,7 @@
-// import s from './style.module.css';
-
 import { StarFill, Star as StarEmpty, StarHalf } from 'react-bootstrap-icons';
 export function FiveStarsRating({ rating }) {
   //Declare an empty stars table (jsx)
   const starList = [];
-
   //Store in a variable all the full stars
   const starFillCount = Math.floor(rating);
   //Store on a variable if there is or is not a half star
@@ -23,6 +20,5 @@ export function FiveStarsRating({ rating }) {
   for (let i = 1; i <= emptyStarCount; i++) {
     starList.push(<StarEmpty key={'star-empty' + i} />);
   }
-
   return <div>{starList}</div>;
 }

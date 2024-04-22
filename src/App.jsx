@@ -4,7 +4,6 @@ import './global.css';
 import s from './style.module.css';
 import { BACKDROP_BASE_URL } from './config.js';
 import { TVShowDetails } from './components/TVShowDetails/TVShowDetails.jsx';
-// import { TVShowProvidersList } from './components/TVShowProviders/TVShowProvidersList.jsx';
 import { Logo } from './components/Logo/Logo';
 import logo from './assets/images/logo.png';
 import { TVShowList } from './components/TVShowList/TVShowList.jsx';
@@ -42,9 +41,7 @@ export function App() {
       if (providers.CA.flatrate.length > 0) {
         setProvidersList(providers.CA.flatrate.slice(0, 3));
       }
-    } catch (error) {
-      // alert('Error while searching providers');
-    }
+    } catch (error) {}
   }
   async function searchTVShow(tvShowName) {
     try {
@@ -67,7 +64,6 @@ export function App() {
     }
   }, [currentTVShow]);
 
-  //If currentTVShow change, we want to update the list of recommendations based on that
   useEffect(() => {
     if (currentTVShow) {
       fetchRecommendations(currentTVShow.id);
